@@ -11,8 +11,7 @@ public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
             .MaximumLength(100).WithMessage("Customer Name must not exceed 100 characters.");
 
         RuleFor(x => x.IcNumber)
-            .NotEmpty().WithMessage("IC Number is required.")
-            .Matches(@"^\d{12}$").WithMessage("IC Number must be exactly 12 digits.");
+            .NotEmpty().WithMessage("IC Number is required.");
 
         RuleFor(x => x.MobileNumber)
             .NotEmpty().WithMessage("Mobile Number is required.")
