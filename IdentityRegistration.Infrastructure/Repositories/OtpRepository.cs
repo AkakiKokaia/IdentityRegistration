@@ -1,13 +1,14 @@
 ﻿using IdentityRegistration.Domain.Entities;
 using IdentityRegistration.Domain.Enum.Otp;
 using IdentityRegistration.Domain.Interfaces;
+using IdentityRegistration.Infrastructure.Db;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityRegistration.Infrastructure.Repositories;
 
 public class OtpRepository : BaseRepository<Otp>, IOtpRepository
 {
-    public OtpRepository(DbContext context) : base(context) { }
+    public OtpRepository(IdentityRegistrationDbContext context) : base(context) { }
 
     public async Task<Otp?> GetValidOtpAsync(Guid userId, NotificationAddressType notificationAddressType)
     {

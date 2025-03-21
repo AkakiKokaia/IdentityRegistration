@@ -1,12 +1,13 @@
 ﻿using IdentityRegistration.Domain.Entities;
 using IdentityRegistration.Domain.Interfaces;
+using IdentityRegistration.Infrastructure.Db;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityRegistration.Infrastructure.Repositories;
 
 public class UserRepository : BaseRepository<User>, IUserRepository
 {
-    public UserRepository(DbContext context) : base(context) { }
+    public UserRepository(IdentityRegistrationDbContext context) : base(context) { }
 
     public async Task<User?> GetByEmailAsync(string email)
     {
