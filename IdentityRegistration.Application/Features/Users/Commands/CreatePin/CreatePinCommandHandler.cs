@@ -19,12 +19,6 @@ public class CreatePinCommandHandler : IRequestHandler<CreatePinCommand, Unit>
         if (!user.IsEmailVerified || !user.IsMobileVerified)
             throw new Exception("Both email and mobile must be verified before setting a PIN.");
 
-        if (string.IsNullOrEmpty(request.PinCode) || request.PinCode.Length != 6)
-            throw new Exception("PIN must be a 6-digit number.");
-
-        if (request.PinCode != request.RepeatPinCode)
-            throw new Exception("Unmached PIN, Please enter your PIN again.");
-
         user.SetPin(request.PinCode);
         await _userRepository.UpdateAsync(user);
 
