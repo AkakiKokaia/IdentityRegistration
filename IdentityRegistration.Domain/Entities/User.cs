@@ -30,7 +30,7 @@ public class User : Entity
     public string? HashedPin { get; private set; }
 
     public bool HasAgreedToTerms { get; private set; } = false;
-    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+    public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
 
     public bool IsBiometricLoginActivated { get; private set; } = false;
 
